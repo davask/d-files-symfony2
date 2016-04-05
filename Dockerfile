@@ -11,7 +11,10 @@ RUN apt-get update
 RUN apt-get install -y \
 php5 \
 curl \
+git \
 acl
+
+RUN rm -rf /var/lib/apt/lists/*
 
 RUN curl -sS https://getcomposer.org/installer | php;
 RUN mv composer.phar /usr/local/bin/composer;
