@@ -17,6 +17,3 @@ RUN curl -sS https://getcomposer.org/installer | php;
 RUN mv composer.phar /usr/local/bin/composer;
 
 COPY ./dwl-setup-1-update-symfony.sh /tmp/dwl-setup-1-update-symfony.sh
-RUN chmod -R 700 /tmp/dwl-setup-1-update-symfony.sh
-
-CMD ["/tmp/dwl-setup-1-update-symfony.sh"]
