@@ -1,6 +1,7 @@
 #! /bin/bash
-# generate github access
 
+# generate github access
+echo "> CHECK GITHUB ACCESS"
 DWL_OAUTH_TOKEN_EXISTS=$([ -f /tmp/dwl_oauth_token ] && echo true || echo false)
 if [ "${DWL_OAUTH_TOKEN_EXISTS}" = true ]; then
     DWL_COMPOSER_TOKEN=$(cat /tmp/dwl_oauth_token)
@@ -41,4 +42,5 @@ unset DWL_COMPOSER_TOKEN;
 
 cd /var/www/html
 
+echo "> COMPOSER UPDATE"
 composer update

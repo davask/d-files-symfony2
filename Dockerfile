@@ -3,22 +3,17 @@ MAINTAINER davask <contact@davaskweblimited.com>
 
 LABEL dwl.files.framework="symfony2"
 
-USER symfony2
-
-# disable interactive functions
-ENV DEBIAN_FRONTEND noninteractive
-
 RUN apt-get update
-
-RUN apt-get install -y \
-php5 \
-curl \
-git \
-acl
-
+RUN apt-get install -y php5
+RUN apt-get install -y curl
+RUN apt-get install -y git
+RUN apt-get install -y acl
 RUN rm -rf /var/lib/apt/lists/*
 
 RUN curl -sS https://getcomposer.org/installer | php;
 RUN mv composer.phar /usr/local/bin/composer;
 
-COPY ./dwl-setup-1-update-symfony.sh /tmp/dwl-setup-1-update-symfony.sh
+# Copy instantiation specific file
+COPY ./update-symfony.sh $DWL_INIT_DIR/$DWL_INIT_COUNT-update-symfony.sh
+# update counter for next container
+RUN DWL_INIT_COUNT=$(($DWL_INIT_COUNT+1))
