@@ -13,7 +13,7 @@ RUN rm -rf /var/lib/apt/lists/*
 RUN curl -sS https://getcomposer.org/installer | php;
 RUN mv composer.phar /usr/local/bin/composer;
 
+# Declare instantiation counter
+ENV DWL_INIT_COUNT 2
 # Copy instantiation specific file
 COPY ./update-symfony.sh $DWL_INIT_DIR/$DWL_INIT_COUNT-update-symfony.sh
-# update counter for next container
-ENV DWL_INIT_COUNT $(($DWL_INIT_COUNT+1))
